@@ -7,10 +7,16 @@ public class PlayerController : MonoBehaviour {
     }
 
     void HandleInput() {
-        var horizontalInputValue = Input.GetAxis("Horizontal");
-        Debug.Log($"Horizontal Input value: {horizontalInputValue}");
+        var xInputValue = Input.GetAxis("Horizontal");
+        var yInputValue = Input.GetAxis("Vertical");
+        var localPosition = transform.localPosition;
+        var xPositionTarget = localPosition.x + 0.1f;
+        var yPositionTarget = localPosition.y + 0.1f;
 
-        var verticalInputValue = Input.GetAxis("Vertical");
-        Debug.Log($"Vertical Input value: {verticalInputValue}");
+        transform.localPosition = new Vector3(
+            xPositionTarget,
+            yPositionTarget,
+            localPosition.z
+        );
     }
 }
