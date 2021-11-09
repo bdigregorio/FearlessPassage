@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] float movementFactor = 30f;
     [SerializeField] float xRange = 15f;
     [SerializeField] float yRange = 15;
-    [SerializeField] float positionPitchFactor = -1.35f;
+    [SerializeField] float pitchPositionFactor = -1.35f;
     [SerializeField] private float pitchInputFactor = -25f;
 
     float xInputValue, yInputValue;
@@ -41,14 +41,13 @@ public class PlayerController : MonoBehaviour {
     void HandleRotation() {
         var localPosition = transform.localPosition;
         
-        var pitchFromYLocalPos = localPosition.y * positionPitchFactor;
+        var pitchFromRelativeYPosition = localPosition.y * pitchPositionFactor;
         var pitchFromYInput = yInputValue * pitchInputFactor;
-        var pitch = pitchFromYLocalPos + pitchFromYInput;
+        var computedPitch = pitchFromRelativeYPosition + pitchFromYInput;
         
-        var yaw = 0f;
+        var computedYaw = localPosition.x * -pitchPositionFactor;
+        var computedRoll = xInputValue * pitchInputFactor;
         
-        var roll = 0f;
-        
-        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+        transform.localRotation = Quaternion.Euler(computedPitch, computedYaw, computedRoll);
     }
 }
