@@ -615,6 +615,10 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 673734984, guid: 7c9f252666e75a54185120e306438570, type: 3}
+      propertyPath: rollInputFactor
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 673734984, guid: 7c9f252666e75a54185120e306438570, type: 3}
       propertyPath: pitchInputFactor
       value: -25
       objectReference: {fileID: 0}
