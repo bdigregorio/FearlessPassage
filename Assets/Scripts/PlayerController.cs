@@ -1,7 +1,10 @@
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    [SerializeField] float movementFactor = 10f;
+    [SerializeField] float movementFactor = 30f;
+    [SerializeField] float xRange = 15f;
+    [SerializeField] float yMin = -5f;
+    [SerializeField] private float yMax = 15f;
 
     void Update() {
         HandleInput();
@@ -12,15 +15,17 @@ public class PlayerController : MonoBehaviour {
         
         var xInputValue = Input.GetAxis("Horizontal");
         var xOffset = xInputValue * Time.deltaTime * movementFactor;
-        var xTargetPosition = localPosition.x + xOffset;
+        var xPosRaw = localPosition.x + xOffset;
+        var xClamped = Mathf.Clamp(xPosRaw, -xRange, xRange);
 
         var yInputValue = Input.GetAxis("Vertical");
         var yOffset = yInputValue * Time.deltaTime * movementFactor;
-        var yTargetPosition = localPosition.y + yOffset;
+        var yPosRaw = localPosition.y + yOffset;
+        var yClamped = Mathf.Clamp(yPosRaw, yMin, yMax);
         
         transform.localPosition = new Vector3(
-            xTargetPosition,
-            yTargetPosition,
+            xClamped,
+            yClamped,
             localPosition.z
         );
     }
