@@ -1,21 +1,26 @@
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+    [SerializeField] float movementFactor = 10f;
 
     void Update() {
         HandleInput();
     }
 
     void HandleInput() {
-        var xInputValue = Input.GetAxis("Horizontal");
-        var yInputValue = Input.GetAxis("Vertical");
         var localPosition = transform.localPosition;
-        var xPositionTarget = localPosition.x + 0.1f;
-        var yPositionTarget = localPosition.y + 0.1f;
+        
+        var xInputValue = Input.GetAxis("Horizontal");
+        var xOffset = xInputValue * Time.deltaTime * movementFactor;
+        var xTargetPosition = localPosition.x + xOffset;
 
+        var yInputValue = Input.GetAxis("Vertical");
+        var yOffset = yInputValue * Time.deltaTime * movementFactor;
+        var yTargetPosition = localPosition.y + yOffset;
+        
         transform.localPosition = new Vector3(
-            xPositionTarget,
-            yPositionTarget,
+            xTargetPosition,
+            yTargetPosition,
             localPosition.z
         );
     }
