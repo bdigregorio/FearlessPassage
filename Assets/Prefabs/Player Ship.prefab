@@ -395,7 +395,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38709ec827777754ba8b50179be3afeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementFactor: 30
+  movementFactor: 40
   xRange: 15
-  yMin: -5
-  yMax: 15
+  yRange: 11
+  pitchPositionFactor: -1.35
+  pitchInputFactor: -25
+  yawPositionFactor: 2
+  rollInputFactor: -45
