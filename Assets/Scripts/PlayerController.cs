@@ -4,22 +4,29 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] float movementFactor = 30f;
     [SerializeField] float xRange = 15f;
     [SerializeField] float yRange = 15;
-    [SerializeField] private float positionPitchFactor = -1.35f; 
+    [SerializeField] float positionPitchFactor = -1.35f;
+    [SerializeField] private float pitchInputFactor = -25f;
+
+    float xInputValue, yInputValue;
 
     void Update() {
+        ReadInputValues();
         HandleTranslation();
         HandleRotation();
+    }
+
+    void ReadInputValues() {
+        xInputValue = Input.GetAxis("Horizontal");
+        yInputValue = Input.GetAxis("Vertical");
     }
 
     void HandleTranslation() {
         var localPosition = transform.localPosition;
         
-        var xInputValue = Input.GetAxis("Horizontal");
         var xOffset = xInputValue * Time.deltaTime * movementFactor;
         var xPosRaw = localPosition.x + xOffset;
         var xClamped = Mathf.Clamp(xPosRaw, -xRange, xRange);
 
-        var yInputValue = Input.GetAxis("Vertical");
         var yOffset = yInputValue * Time.deltaTime * movementFactor;
         var yPosRaw = localPosition.y + yOffset;
         var yClamped = Mathf.Clamp(yPosRaw, -yRange, yRange);
@@ -33,11 +40,14 @@ public class PlayerController : MonoBehaviour {
 
     void HandleRotation() {
         var localPosition = transform.localPosition;
-        var pitch = localPosition.y * positionPitchFactor;
+        
+        var pitchFromYLocalPos = localPosition.y * positionPitchFactor;
+        var pitchFromYInput = yInputValue * pitchInputFactor;
+        var pitch = pitchFromYLocalPos + pitchFromYInput;
+        
         var yaw = 0f;
+        
         var roll = 0f;
-
-        Debug.Log($"Local y position: {localPosition.y}; calculated pitch: {pitch}");
         
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
     }
