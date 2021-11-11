@@ -336,6 +336,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1215278678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7838026195350755338, guid: b40f2974aba008c4188724ccf3ee9f61, type: 3}
+  m_PrefabInstance: {fileID: 9140984966540924480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1724744947
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,6 +417,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1827419547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7840584444564614596, guid: b40f2974aba008c4188724ccf3ee9f61, type: 3}
+  m_PrefabInstance: {fileID: 9140984966540924480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1844556565
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +481,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5730939934293944835, guid: b40f2974aba008c4188724ccf3ee9f61, type: 3}
+      propertyPath: laserObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730939934293944835, guid: b40f2974aba008c4188724ccf3ee9f61, type: 3}
+      propertyPath: laserObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1215278678}
+    - target: {fileID: 5730939934293944835, guid: b40f2974aba008c4188724ccf3ee9f61, type: 3}
+      propertyPath: laserObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1827419547}
     - target: {fileID: 9140984966584362928, guid: b40f2974aba008c4188724ccf3ee9f61, type: 3}
       propertyPath: m_Name
       value: Player Rig

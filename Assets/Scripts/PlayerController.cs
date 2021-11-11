@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] float movementFactor = 30f;
     [SerializeField] float xRange = 15f;
     [SerializeField] float yRange = 15;
+    [SerializeField] GameObject[] laserObjects;
     
     [SerializeField] float pitchPositionFactor = -1.35f;
     [SerializeField] float pitchInputFactor = -25f;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour {
         ReadInputValues();
         HandleTranslation();
         HandleRotation();
+        HandleWeapons();
     }
 
     void ReadInputValues() {
@@ -51,5 +53,17 @@ public class PlayerController : MonoBehaviour {
         var computedRoll = xInputValue * rollInputFactor;
         
         transform.localRotation = Quaternion.Euler(computedPitch, computedYaw, computedRoll);
+    }
+
+    void HandleWeapons() {
+        if (Input.GetButton("Fire1")) {
+            foreach (var laser in laserObjects) {
+                laser.SetActive(true);
+            }
+        } else {
+            foreach (var laser in laserObjects) {
+                laser.SetActive(false);
+            }
+        }
     }
 }
