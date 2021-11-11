@@ -55,15 +55,18 @@ public class PlayerController : MonoBehaviour {
         transform.localRotation = Quaternion.Euler(computedPitch, computedYaw, computedRoll);
     }
 
-    void HandleWeapons() {
+    void HandleWeapons() { 
         if (Input.GetButton("Fire1")) {
-            foreach (var laser in laserObjects) {
-                laser.SetActive(true);
-            }
+            ToggleLasers(enabledState: true);
         } else {
-            foreach (var laser in laserObjects) {
-                laser.SetActive(false);
-            }
+            ToggleLasers(enabledState: false);
+        }
+    }
+
+    void ToggleLasers(bool enabledState) {
+        foreach (var laser in laserObjects) {
+            var emissionModule = laser.GetComponent<ParticleSystem>().emission;
+            emissionModule.enabled = enabledState;
         }
     }
 }

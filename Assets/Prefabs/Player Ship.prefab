@@ -400,6 +400,7 @@ MonoBehaviour:
   movementFactor: 40
   xRange: 15
   yRange: 11
+  laserObjects: []
   pitchPositionFactor: -1.35
   pitchInputFactor: -25
   yawPositionFactor: 2
@@ -520,6 +521,10 @@ PrefabInstance:
     - target: {fileID: 4306479833137364124, guid: 438cbc77819c8b640b1a179839b3ecc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306479833137364125, guid: 438cbc77819c8b640b1a179839b3ecc9, type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4306479833137364127, guid: 438cbc77819c8b640b1a179839b3ecc9, type: 3}
       propertyPath: m_Name
