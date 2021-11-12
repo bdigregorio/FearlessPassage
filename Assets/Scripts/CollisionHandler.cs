@@ -2,17 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour {
-    void Start() {
-        Debug.Log($"{this.name} is monitoring for collisions");
+    [SerializeField] float sceneTransitionDelay = 1f;
+
+    void OnTriggerEnter(Collider other) {
+        StartCrashSequence();
     }
 
-    void OnCollisionEnter(Collision other) {
-        Debug.Log($"{this.name} has collided with {other.gameObject.name}");
+    void StartCrashSequence() {
+        var playerController = GetComponent<PlayerController>();
+        if (playerController is null) return;
+        playerController.enabled = false;
+        Invoke(nameof(RestartScene), sceneTransitionDelay);
     }
 
-    private void OnTriggerEnter(Collider other) {
-        Debug.Log($"{this.name} has been triggered by {other.gameObject.name}");
+    void RestartScene() {
+        var sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(sceneIndex);
     }
 }
