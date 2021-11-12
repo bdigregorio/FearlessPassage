@@ -1,16 +1,28 @@
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    [SerializeField] float movementFactor = 30f;
+    [Header("Translation Params")]
+    [Tooltip("The relative horizontal range the player is allowed to move between")]
     [SerializeField] float xRange = 15f;
+    [Tooltip("The relative vertical range the player is allowed to move between")]
     [SerializeField] float yRange = 15;
-    [SerializeField] GameObject[] laserObjects;
+    [Tooltip("The speed of horizontal and vertical translation")]
+    [SerializeField] float movementFactor = 30f;
     
+    [Header("Rotation Params")]
+    [Tooltip("Tunes how much pitch is affected by vertical position")]
     [SerializeField] float pitchPositionFactor = -1.35f;
+    [Tooltip("Tunes how much pitch is affected by vertical input")]
     [SerializeField] float pitchInputFactor = -25f;
+    [Tooltip("Tunes how much yaw is affected by horizontal position")]
     [SerializeField] float yawPositionFactor = 2f;
+    [Tooltip("Tunes how much roll is affected by horizontal input")]
     [SerializeField] float rollInputFactor = -35f;
 
+    [Header("Game Object References")]
+    [Tooltip("References to any lasers the player owns")]
+    [SerializeField] GameObject[] laserObjects;
+    
     float xInputValue, yInputValue;
 
     void Update() {
