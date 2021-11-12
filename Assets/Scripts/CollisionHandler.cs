@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour {
     void Start() {
-        Debug.Log($"{gameObject.name} is monitoring for collisions");
+        Debug.Log($"{this.name} is monitoring for collisions");
     }
 
     void OnCollisionEnter(Collision other) {
-        Debug.Log($"{gameObject.name} has collided with {other.gameObject.name}");
+        Debug.Log($"{this.name} has collided with {other.gameObject.name}");
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log($"{gameObject.name} has been triggered by {other.gameObject.name}");
+        Debug.Log($"{this.name} has been triggered by {other.gameObject.name}");
     }
 }
