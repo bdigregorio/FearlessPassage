@@ -458,6 +458,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac0425112687694c9b1a5439083c1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &1238372392 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8390387127071919297, guid: b40f2974aba008c4188724ccf3ee9f61, type: 3}
+  m_PrefabInstance: {fileID: 9140984966540924480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1724744947
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +693,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3527348970029695230, guid: b40f2974aba008c4188724ccf3ee9f61, type: 3}
+      propertyPath: explosionFx
+      value: 
+      objectReference: {fileID: 1238372392}
     - target: {fileID: 9140984966584362928, guid: b40f2974aba008c4188724ccf3ee9f61, type: 3}
       propertyPath: m_Name
       value: Player Rig
