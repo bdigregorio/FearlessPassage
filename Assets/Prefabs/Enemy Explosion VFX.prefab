@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.9622642, g: 0.63461953, b: 0.2215023, a: 1}
+      maxColor: {r: 0.5660378, g: 0.43414104, b: 0.26379493, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4818,3 +4818,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f666e296654a0440ba4c6c72466c253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selfDestructTime: 1.5
