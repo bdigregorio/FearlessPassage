@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneTransitionDelay: 1
+  explosionFx: {fileID: 3005798777596861619, guid: b3a0a1d865a9ce84f92cad4d5dd76167, type: 3}
 --- !u!54 &8964591178679068085
 Rigidbody:
   m_ObjectHideFlags: 0
