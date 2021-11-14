@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262472685915738028}
-  m_LocalRotation: {x: 0.027786652, y: 0.9614641, z: -0.25217238, w: 0.10594288}
-  m_LocalPosition: {x: 429.71063, y: 58.741455, z: 492.69968}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 389.393, y: 167.424, z: 360}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1262472685915738024
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -129,4 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionFx: {fileID: 3005798777596861619, guid: 3b7cdd54d182006499920ad4ec876bb5, type: 3}
+  damageFx: {fileID: 6106141239298467172, guid: de7f53fe3df61867b9a483881c2f8654, type: 3}
   enemyVfxParent: {fileID: 0}
+  pointValue: 10
+  remainingHealth: 5
