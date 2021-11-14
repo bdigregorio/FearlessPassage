@@ -1,12 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Scoreboard : MonoBehaviour {
-    private int score;
+    int score;
+    TMP_Text scoreText;
+
+    private void Start() {
+        scoreText = GetComponent<TMP_Text>();
+    }
 
     public void IncreaseScore(int points) {
         score += points;
-        Debug.Log($"Score increased by {points} points; Score is now {score}");
+        scoreText.text = $"Score: {score}";
     }
 }
