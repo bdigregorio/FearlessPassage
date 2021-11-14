@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour {
@@ -31,7 +32,8 @@ public class EnemyBehavior : MonoBehaviour {
     }
 
     void HandleDamage() {
-        Debug.Log($"{this.name} has taken 1 damage");
+        scoreBoard.IncreaseScore(pointValue);
+        StartCoroutine(nameof(FlashDamage));
     }
 
     void HandleExplosion() {
@@ -40,5 +42,12 @@ public class EnemyBehavior : MonoBehaviour {
         fx.transform.parent = enemyVfxParent;
         fx.Play();
         Destroy(this.gameObject);
+    }
+
+    IEnumerator FlashDamage() {
+        var material = GetComponent<MeshRenderer>().material;
+        material.color = Color.red;
+        yield return new WaitForSeconds(0.05f);
+        material.color = Color.white;
     }
 }
