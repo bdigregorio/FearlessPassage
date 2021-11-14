@@ -130,3 +130,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionFx: {fileID: 3005798777596861619, guid: 3b7cdd54d182006499920ad4ec876bb5, type: 3}
   enemyVfxParent: {fileID: 0}
+  pointValue: 10
