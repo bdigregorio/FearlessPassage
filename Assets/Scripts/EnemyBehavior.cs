@@ -4,19 +4,34 @@ public class EnemyBehavior : MonoBehaviour {
     [SerializeField] ParticleSystem explosionFx;
     [SerializeField] Transform enemyVfxParent;
     [SerializeField] int pointValue = 5;
+    [SerializeField] private int remainingHealth = 1;
     
     Scoreboard scoreBoard;
+    
 
     void Start() {
         scoreBoard = FindObjectOfType<Scoreboard>();
     }
     
     void OnParticleCollision(GameObject other) {
-        HandleExplosion();
+        ProcessHit();
     }
 
     void OnTriggerEnter(Collider other) {
         HandleExplosion();
+    }
+
+    void ProcessHit() {
+        if (--remainingHealth < 1) {
+            HandleExplosion();
+        }
+        else {
+            HandleDamage();
+        }
+    }
+
+    void HandleDamage() {
+        Debug.Log($"{this.name} has taken 1 damage");
     }
 
     void HandleExplosion() {
