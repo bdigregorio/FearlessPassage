@@ -76,6 +76,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     void ToggleLasers(bool enabledState) {
+        if (laserObjects is null || laserObjects.Length == 0) return;
+        
         foreach (var laser in laserObjects) {
             var emissionModule = laser.GetComponent<ParticleSystem>().emission;
             emissionModule.enabled = enabledState;
