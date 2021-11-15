@@ -3,51 +3,49 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour {
     [SerializeField] ParticleSystem explosionFx;
+    [SerializeField] ParticleSystem damageFx;
     [SerializeField] Transform enemyVfxParent;
     [SerializeField] int pointValue = 5;
     [SerializeField] private int remainingHealth = 1;
     
     Scoreboard scoreBoard;
-    
 
     void Start() {
-        scoreBoard = FindObjectOfType<Scoreboard>();
+        CacheScoreboard();
+        AddRigidbody();
     }
     
     void OnParticleCollision(GameObject other) {
-        ProcessHit();
+        ProcessDamage();
     }
 
     void OnTriggerEnter(Collider other) {
-        HandleExplosion();
+        PlayVfx(explosionFx);
     }
 
-    void ProcessHit() {
+    void AddRigidbody() {
+        var rb = gameObject.AddComponent<Rigidbody>();
+        rb.useGravity = false;
+    }
+
+    void CacheScoreboard() {
+        scoreBoard = FindObjectOfType<Scoreboard>();
+    }
+
+    void ProcessDamage() {
+        scoreBoard.IncreaseScore(pointValue);
         if (--remainingHealth < 1) {
-            HandleExplosion();
+            PlayVfx(explosionFx);
+            Destroy(this.gameObject);
         }
         else {
-            HandleDamage();
+            PlayVfx(damageFx);
         }
     }
 
-    void HandleDamage() {
-        scoreBoard.IncreaseScore(pointValue);
-        StartCoroutine(nameof(FlashDamage));
-    }
-
-    void HandleExplosion() {
-        scoreBoard.IncreaseScore(pointValue);
-        var fx = Instantiate(explosionFx, transform.position, Quaternion.identity);
+    void PlayVfx(ParticleSystem particleClass) {
+        var fx = Instantiate(particleClass, transform.position, Quaternion.identity);
         fx.transform.parent = enemyVfxParent;
         fx.Play();
-        Destroy(this.gameObject);
-    }
-
-    IEnumerator FlashDamage() {
-        var material = GetComponent<MeshRenderer>().material;
-        material.color = Color.red;
-        yield return new WaitForSeconds(0.05f);
-        material.color = Color.white;
     }
 }

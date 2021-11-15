@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionFx: {fileID: 3005798777596861619, guid: 3b7cdd54d182006499920ad4ec876bb5, type: 3}
-  damageFx: {fileID: 6106141239298467172, guid: de7f53fe3df61867b9a483881c2f8654, type: 3}
+  damageFx: {fileID: 3005798777596861619, guid: c8ea11849282b99469e7a2d4e4a3be68, type: 3}
   enemyVfxParent: {fileID: 0}
   pointValue: 10
   remainingHealth: 5
