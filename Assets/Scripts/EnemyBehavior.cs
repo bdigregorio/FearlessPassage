@@ -4,14 +4,14 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour {
     [SerializeField] ParticleSystem explosionFx;
     [SerializeField] ParticleSystem damageFx;
-    [SerializeField] Transform enemyVfxParent;
     [SerializeField] int pointValue = 5;
     [SerializeField] private int remainingHealth = 1;
     
     Scoreboard scoreBoard;
+    GameObject enemyVfxContainer;
 
     void Start() {
-        CacheScoreboard();
+        BuildCache();
         AddRigidbody();
     }
     
@@ -20,7 +20,7 @@ public class EnemyBehavior : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
-        PlayVfx(explosionFx);
+        DestroySequence();
     }
 
     void AddRigidbody() {
@@ -28,15 +28,15 @@ public class EnemyBehavior : MonoBehaviour {
         rb.useGravity = false;
     }
 
-    void CacheScoreboard() {
+    void BuildCache() {
         scoreBoard = FindObjectOfType<Scoreboard>();
+        enemyVfxContainer = GameObject.FindWithTag("EnemyVFXContainer");
     }
 
     void ProcessDamage() {
         scoreBoard.IncreaseScore(pointValue);
         if (--remainingHealth < 1) {
-            PlayVfx(explosionFx);
-            Destroy(this.gameObject);
+            DestroySequence();
         }
         else {
             PlayVfx(damageFx);
@@ -45,7 +45,12 @@ public class EnemyBehavior : MonoBehaviour {
 
     void PlayVfx(ParticleSystem particleClass) {
         var fx = Instantiate(particleClass, transform.position, Quaternion.identity);
-        fx.transform.parent = enemyVfxParent;
+        fx.transform.parent = enemyVfxContainer.transform;
         fx.Play();
+    }
+
+    void DestroySequence() {
+            PlayVfx(explosionFx);
+            Destroy(this.gameObject);
     }
 }
