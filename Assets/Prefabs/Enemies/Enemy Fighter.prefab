@@ -2256,7 +2256,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5931173929329677620}
   - component: {fileID: 187602418965746704}
-  - component: {fileID: 5310688110522115620}
   m_Layer: 0
   m_Name: Enemy Fighter
   m_TagString: Untagged
@@ -2310,21 +2309,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionFx: {fileID: 3005798777596861619, guid: 3b7cdd54d182006499920ad4ec876bb5, type: 3}
   damageFx: {fileID: 3005798777596861619, guid: c8ea11849282b99469e7a2d4e4a3be68, type: 3}
-  enemyVfxParent: {fileID: 0}
   pointValue: 10
   remainingHealth: 5
---- !u!114 &5310688110522115620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5934602708642431626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 860afaa3c7895af93b6c2394da5cad12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5934605760851368778
 GameObject:
   m_ObjectHideFlags: 0
